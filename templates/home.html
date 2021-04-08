@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Churn Prediction</title>
+     <meta name = "viewport" content = "width = device-width, initial-scale = 0.1">
+    <link rel="stylesheet" href="static">
+<!--      <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">-->
+<!--      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--      <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+
+<style>
+ body {
+    background: linear-gradient(135deg,#71b7e6,#9b59b6);
+    background-repeat: no-repeat;
+    background-attachment:
+    fixed;
+    background-position: center;
+    background-size:100% 100%;
+    font-family:cursive;
+    }
+
+  label{
+  right:50px;
+  box-sizing:border-box;
+  width:40%;
+  display: inline-block;
+  color:black;
+  font-weight:bold;
+  font-size:25px;
+  }
+
+
+
+    .form-group{
+    margin:auto;
+    padding:10px;
+    color:black;
+    font-weight:bold;
+    font-size:15.5px;
+    border: 1px solid blue;
+    }
+
+    .form-inline{
+   background-color:#F5ECEC;
+   width:650px;
+   margin:auto;
+   height:auto;
+   display:inline-block;
+   text-align:left;
+   color:black;
+   border: 8px solid blue;
+   border-radius:25px;
+   font-weight:bold;
+
+    }
+
+  button{
+
+  display:block;
+  margin:20px 0px 0px 20px;
+  text-align:center;
+  padding:14px 110px;
+  outline:none;
+  background:linear-gradient(135deg,#71b7e6,#9b59b6);
+  cursor:pointer;
+  transition:0.25px;
+  border-radius:6px;
+  }
+
+  .result{
+  font-size:60px;
+  text-align:center;
+  font-weight:bold;
+  padding:1rem;
+  width:fit-content;
+  height:auto;
+  color:blue;
+  }
+  .heading{
+   font-size:90px;
+   font-weight:bold;
+   text-align:center;
+}
+  .row{
+  display:flex;}
+
+.footer{
+     position:auto;
+     left:0;
+     bottom:0;
+     width:100%;
+     font-size:30px;
+     text-align:center;
+     font-family:cursive;
+     }
+
+
+
+
+
+</style>
+
+</head>
+<body>
+  <div>
+    <header class="heading">Telco Churn Prediction</header></div>
+<!-- <div class="container" align="center">-->
+
+
+    <div class="row">
+        <div class="col" align="left">
+            <div class="left-side">
+                <p style="font-size:30px; color:white; font-weight:bold;"><span style="font-size:88px;">C</span>ustomer churn is a major problem  that many companies face today. This affects not only short term but also long term
+                revenues of companies. It is one of the most important metrics about customer retention for a company.<br>
+                The <span style="color:black; font-weight:bold;">Telecommunications</span> industry regurly faces a lot of competition from various service provides,
+                which generally provide services at very similar pricing points and services. In such a competitive stage, it is extremely essential for a telco company to analyze
+                    the rate at which their customers stop using their services to be able to understand how to better engage with those customers and understand their grievances.
+                <br><br>
+                Churn occurs mainly due to customer dissatisfaction. Identifying customer dissatisfaction requires several parameters. A customer usually does not churn due to a single dissatisfaction scenario. There usually exist several dissatisfaction cases before a customer completely ceases to do transactions with an organization. Several properties associated with the customer and their mode of operations with the organization are recorded by the organizations. This represents the customer’s behavior data.
+                    Analyzing this data would present a clear view of the customer’s current status.
+                <br> <br>
+                    This Machine Learning based web app is about predicting whether a customer will change telecommunications provider, something known as “churning”.
+
+                </p>
+            </div>
+
+
+        </div>
+
+
+        <div class="col" align="right">
+            <div class="right-side">
+       <form  action='/predict' method="POST" class="form-inline">
+           <h1 align="center">Prediction Form</h1>
+               <div  class="form-group">
+               <label class="SeniorCitizen"><b>Senior Citizen - </b></label>
+                   <b>Yes</b>:<input id="one" name="SeniorCitizen" type="radio" required="required">
+                    <b>No </b>: <input id="one" name="SeniorCitizen" type="radio">
+           </div>
+
+
+
+                 <div class="form-group">
+         <label class="MonthlyCharges"><b>Monthly Charges  </b></label>
+         <input id="second" type="number" name="MonthlyCharges" placeholder="MonthlyCharges" required="required">
+         </div>
+
+
+
+             <div class="form-group">
+
+         <label class="TotalCharges"><b>Total Charges</b></label>
+         <input id="third" type="number" name="TotalCharges" placeholder="TotalCharges" required="required">
+         </div>
+
+
+
+         <div class="radio-toolbar">
+                 <div class="form-group">
+         <label class="Gender"><b>Gender - </b></label>
+         <b>Male</b>:<input id="fourth" value=1 name="gender" type="radio" required="required">
+                     <b>Female</b>: <input id="fourth"  value=0 name="gender" type="radio" required="required">
+         </div>
+
+           <div class="form-group">
+         <label class="Partner"><b>Partner - </b></label>
+         <b>Yes: </b><input id="fifth" value=1 name="Partner" type="radio" required="required">
+         <b>No:</b><input id="fifth" value=0 name="Partner" type="radio" required="required">
+           </div>
+
+
+           <div class="form-group">
+         <label class="Dependents"><b>Dependents - </b></label>
+         <b>Yes: </b><input id="sixth" value=1 name="Dependents" type="radio" required="required">
+         <b>No:</b><input id="sixth" value=0 name="Dependents" type="radio" required="required">
+           </div>
+
+
+           <div class="form-group">
+         <label class="PhoneService"><b>PhoneService -</b></label>
+         <b>Yes: </b><input id="seven" value=1 name="PhoneService" type="radio" required="required">
+         <b>No:</b><input id="seven" value=0 name="PhoneService" type="radio" required="required">
+           </div>
+
+            <div class="form-group">
+         <label class="MultipleLines"><b>MultipleLines -</b></label>
+         <b>Yes: </b><input id="eight" value=1 name="MultipleLines" type="radio" required="required">
+         <b>No:</b><input id="eight" value=2 name="MultipleLines" type="radio" required="required">
+         <b>No phone service :</b><input id="eight" value=3 name="MultipleLines" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="InternetService"><b>Internet Service-</b></label>
+         <b>Fiber optic: </b><input id="nine" value=1    name="InternetService" type="radio" required="required">
+         <b>DSL:</b><input id="nine" value=2 name="InternetService" type="radio" required="required">
+         <b>No :</b><input id="nine" value=3 name="InternetService" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="OnlineSecurity"><b>Online Security-</b></label>
+         <b>Yes: </b><input id="ten" value=1 name="OnlineSecurity" type="radio" required="required">
+         <b>No:</b><input id="ten" value=2 name="OnlineSecurity" type="radio" required="required">
+         <b>No internet service :</b><input id="ten" value=3 name="OnlineSecurity" type="radio" required="required">
+           </div>
+
+            <div class="form-group">
+         <label class="OnlineBackup"><b>Online Backup-</b></label>
+         <b>Yes: </b><input id="eleven" value=1 name="OnlineBackup" type="radio" required="required">
+         <b>No:</b><input id="eleven" value=2 name="OnlineBackup" type="radio" required="required">
+         <b>No internet service :</b><input id="eleven" value=3 name="OnlineBackup" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="DeviceProtection"><b>Device Protection-</b></label>
+         <b>Yes: </b><input id="twelve" value=1 name="DeviceProtection" type="radio" required="required">
+         <b>No:</b><input id="twelve" value=2 name="DeviceProtection" type="radio" required="required">
+         <b>No internet service :</b><input id="twelve" value=3 name="DeviceProtection" type="radio" required="required">
+           </div>
+
+            <div class="form-group">
+         <label class="TechSupport"><b>Tech Support-</b></label>
+         <b>Yes: </b><input id="thirteen" value=1 name="TechSupport" type="radio" required="required">
+         <b>No</b>:</b><input id="thirteen" value=2 name="TechSupport" type="radio" required="required">
+         <b>No internet service :</b><input id="thirteen" value=3 name="TechSupport" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="StreamingTV"><b>Streaming TV-</b></label>
+         <b>Yes: </b><input id="fourteen" value=1 name="StreamingTV" type="radio" required="required">
+         <b>No:</b><input id="fourteen"  value=2 name="StreamingTV" type="radio" required="required">
+         <b>No internet service :</b><input id="fourteen" value=3 name="StreamingTV" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="StreamingMovies"><b>Streaming Movies-</b></label>
+         <b>Yes: </b><input id="fifthteen" value=1 name="StreamingMovies" type="radio" required="required">
+         <b>No:</b><input id="fifthteen" value=2 name="StreamingMovies" type="radio" required="required">
+         <b>No internet service :</b><input id="fifthteen" value=3 name="StreamingMovies" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="Contract"><b>Contract-</b></label>
+         <b>Month-to-month: </b><input id="sixteen" value=1 name="Contract" type="radio" required="required">
+         <b>Two year</b>:</b><input id="sixteen" value=2 name="Contract" type="radio" required="required">
+         <b>One year :</b><input id="sixteen" value=3 name="Contract" type="radio" required="required">
+           </div>
+
+           <div class="form-group">
+         <label class="PaperlessBilling"><b>Paperless Billing - </b></label>
+         <b>Yes: </b><input id="seventeen" value=1 name="PaperlessBilling" type="radio" required="required">
+         <b>No:</b><input id="seventeen" value=0 name="PaperlessBilling" type="radio" required="required">
+           </div>
+         </div>
+
+            <div class="form-group">
+         <label class="PaymentMethod"><b>PaymentMethod - </b></label>
+          <select name="PaymentMethod" id="PaymentMethod" required="required">
+               <option value=1>Electronic check</option>
+               <option value=2>Mailed check</option>
+               <option value=3>Bank transfer (automatic)</option>
+               <option value=4>Credit card (automatic)</option>
+           </select>
+           </div>
+
+           <div class="form-group">
+
+         <label class="tenure_group"><b>tenure_group (1-6)</b></label>
+         <input id="nineteen" type="number" required="required" min=1 max=6 name="tenure_group" placeholder="tenure_group" required="required">
+         </div>
+
+           <div align="center">
+           <button type="submit" class="submit"><b>Submit</b></button>
+            </div>
+
+           <div class="result" align="center">
+                {{output}}
+            </div>
+       </form>
+            </div>
+        </div>
+    </div>
+
+<br>
+     <div class="footer">
+        <footer style='color:yellow'>
+            <p><b>Made by ISHITA MAITY</b></p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
