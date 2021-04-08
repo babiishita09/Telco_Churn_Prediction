@@ -1,5 +1,6 @@
 # Telco_Churn_Prediction
 
+# This Machine Learning based web app is about predicting whether a customer will change telecommunications provider, something known as “churning”.
 
 # Heroku Deployment Link: https://telco-churn-prediction.herokuapp.com/
 
