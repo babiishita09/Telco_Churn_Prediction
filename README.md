@@ -22,3 +22,8 @@ In this project, I have analysed customer-level data of a leading telecom firm, 
 # Data Source:
 (https://github.com/babiishita09/Telco_Churn_Prediction/blob/main/Churn.csv)
 
+# Algorithms used:
+* Random Forest Classifier
+* Decision Tree 
+* Grediet Boosting Classifier
+
