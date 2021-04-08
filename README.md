@@ -24,6 +24,9 @@ In this project, I have analysed customer-level data of a leading telecom firm, 
 
 # Algorithms used:
 * Random Forest Classifier
-* Decision Tree 
-* Grediet Boosting Classifier
+* Decision Tree Classifier
+* Gradient Boosting Classifier
+
+# Demo of my web application:
+![alt-text](https://github.com/babiishita09/Telco_Churn_Prediction/blob/main/Screenshot%20(36).png)
 
