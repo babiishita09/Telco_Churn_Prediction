@@ -30,3 +30,5 @@ In this project, I have analysed customer-level data of a leading telecom firm, 
 # Demo of my web application:
 ![alt-text](https://github.com/babiishita09/Telco_Churn_Prediction/blob/main/Screenshot%20(36).png)
 
+![alt-text](https://github.com/babiishita09/Telco_Churn_Prediction/blob/main/Screenshot%20(38).png)
+
